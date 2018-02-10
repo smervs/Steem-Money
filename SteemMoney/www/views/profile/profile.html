@@ -1,0 +1,185 @@
+﻿<ion-view>
+    <ion-nav-bar class="bar-balanced">
+        <ion-nav-back-button class="button-icon ion-arrow-left-c">
+        </ion-nav-back-button>
+        <ion-nav-buttons side="right">
+            <button class="button-icon ion-refresh refresh-icon-color" ng-click="refresh()"></button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+
+    <div ng-show="hasAccount">
+
+        <ion-pane>
+            <ion-tabs class="tabs-top">
+                <!-- Tab 1 -->
+                <ion-tab title="Profile">
+                    <ion-nav-view name="tab-tab1">
+                        <ion-content>
+                            <div class="wallet-margin">
+                                <div class="row">
+                                    <div class="col col-25">
+                                        <img width="90" height="90" ng-src="{{trustSrc(profile.profile_image)}}" style="border-radius: 50%;" />
+                                    </div>
+                                    <div class="col" style="margin-left:5%;">
+                                        <label style="font-size:24px"><b>{{profile.name}}</b> ({{reputation}})</label><br />
+                                        <span><i class="icon ion-ios-person"></i> @{{accountName}}</span><br />
+                                        <span>{{profile.about}}</span><br />
+                                        <i class="icon ion-ios-calendar-outline"></i> Joined {{formatDate(account.created)}}
+                                    </div>
+                                </div>
+                                <div class="row main-content">
+                                    <h3>Wallet</h3>
+                                </div>
+                                <div class="row">
+                                    <table>
+                                        <tr>
+                                            <td>Steem :</td>
+                                            <td>{{account.balance}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Steem Power :</td>
+                                            <td>{{steemPower.toFixed(3)}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Steem Dollars :</td>
+                                            <td>{{account.sbd_balance}}</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="row">
+                                    <h5>Savings</h5>
+                                </div>
+                                <div class="row">
+                                    <table>
+                                        <tr>
+                                            <td>Steem :</td>
+                                            <td>{{account.savings_balance}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Steem Dollars :</td>
+                                            <td>{{account.savings_sbd_balance}}</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="row">
+                                    <h5>Unclaimed Rewards</h5>
+                                </div>
+                                <div class="row">
+                                    <table>
+                                        <tr>
+                                            <td>Steem :</td>
+                                            <td>{{account.reward_steem_balance}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Steem Power :</td>
+                                            <td>{{account.reward_vesting_steem.replace(" STEEM","")}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Steem Dollars :</td>
+                                            <td>{{account.reward_sbd_balance}}</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="row">
+                                    <h5>TOTAL</h5>
+                                </div>
+                                <div class="row">
+                                    <table>
+                                        <tr>
+                                            <td rowspan="3" class="center-logo"><img src="./images/logo.png" alt="Wallet" width="80" /></td>
+                                            <td>{{total_steem_wallet.toFixed(3)}} STEEM</td>
+                                        </tr>
+                                        <tr>
+                                            <td>{{total_sp_wallet.toFixed(3)}} STEEM POWER</td>
+                                        </tr>
+                                        <tr>
+                                            <td>{{total_sbd_wallet.toFixed(3)}} SBD</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </ion-content>
+                    </ion-nav-view>
+                </ion-tab>
+
+
+                <!-- Tab 2 -->
+                <ion-tab title="Pending Payout">
+                    <ion-nav-view name="tab-tab2">
+                        <ion-content>
+                            <div class="wallet-margin">
+                                <div class="row">
+                                    <div class="col col-25">
+                                        <img width="90" height="90" src="./images/post.png" style="border-radius: 50%;" />
+                                    </div>
+                                    <div class="col" style="margin-left:5%;">
+                                        <label class="main-title"><b>{{total_post_count}}</b> Total Posts</label><br />
+                                        <span class="main-sub-title"><i class="icon ion-ios-arrow-up"></i> {{total_votes_count}} Total Votes</span><br />
+                                    </div>
+                                </div>
+                                <div class="row main-content">
+                                    <h3>Pending Payout</h3>
+                                </div>
+                                <div class="row">
+                                    <table>
+                                        <tr>
+                                            <td>Total Pending Payout :</td>
+                                            <td>{{total_pending_payout}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Last Payout Date :</td>
+                                            <td>{{lastPayoutDate}}</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div>
+                                    <h5>25% Curation Reward / 75% Author Reward</h5>
+                                </div>
+                                <div class="row">
+                                    <table>
+                                        <tr>
+                                            <td>Total Author Rewards :</td>
+                                            <td>{{total_author_rewards}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Total Curation Rewards :</td>
+                                            <td>{{total_curation_rewards}}</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div>
+                                    <h5>Steem Dollars (Author Rewards / 2)</h5>
+                                </div>
+                                <div class="row">
+                                    <table>
+                                        <tr>
+                                            <td>Total SBD Value :</td>
+                                            <td>{{total_sbd_value}}</td>
+                                        </tr>
+                                    </table>
+                                </div><br>
+                                <div class="row">
+                                    <h5>Total Wallet on {{lastPayoutDate}}</h5>
+                                </div>
+                                <div class="row">
+                                    <table>
+                                        <tr>
+                                            <td rowspan="3" class="center-logo"><img src="./images/logo.png" alt="Wallet" width="80" /></td>
+                                            <td>{{total_steem_wallet.toFixed(3)}} STEEM</td>
+                                        </tr>
+                                        <tr>
+                                            <td>{{total_sp_wallet.toFixed(3)}} STEEM POWER</td>
+                                        </tr>
+                                        <tr>
+                                            <td>{{total_sbd_wallet_payout}} SBD</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </ion-content>
+                    </ion-nav-view>
+                </ion-tab>
+            </ion-tabs>
+        </ion-pane>
+    </div>
+</ion-view>

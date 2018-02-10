@@ -1,0 +1,68 @@
+.wallet-margin{
+    margin: 15px;
+}
+
+.center {
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    position: absolute;
+    top: 50%;
+    left:50%;
+}
+
+.div-content-center{
+    text-align: center;
+}
+
+.home-input-center{
+    width: 150% !important;
+    left: -30% !important;
+}
+
+.logo-title{
+
+}
+
+.steem {
+    color: #1A5098;
+}
+
+.money {
+    color: #4BA0F0;
+}
+
+.steem-market{
+    font-size: 18px;
+}
+
+.main-title{
+    font-size:22px;
+}
+
+.main-sub-title{
+    font-size: 16px;
+}
+
+.content-sub-title{
+    font-size: 14px;
+}
+
+.main-content{
+    margin-top:10px !important;
+}
+
+table td {
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 15px;
+    padding-right: 10px;
+    font-size: 14px;
+}
+
+html body .center-logo{
+    vertical-align: middle;
+}
+
+.refresh-icon-color{
+    color: white;
+}
