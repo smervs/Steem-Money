@@ -96,25 +96,27 @@
                 var total_votes = 0;
 
                 result.forEach(function (post) {
-                    var now = new Date();
-                    var cashout_time = new Date(post.cashout_time);
+                    if (post.author == vm.accountName) {
+                        var now = new Date();
+                        var cashout_time = new Date(post.cashout_time);
 
-                    if(cashout_time > now){
-                        var payout = parseFloat(post.pending_payout_value.replace(" SBD", ""));
+                        if (cashout_time > now) {
+                            var payout = parseFloat(post.pending_payout_value.replace(" SBD", ""));
 
-                        total_posts_value += payout;
-                        curation_rewards += payout * 0.25;
-                        author_rewards += payout * 0.75;
-                        total_votes += post.active_votes.length;
+                            total_posts_value += payout;
+                            curation_rewards += payout * 0.25;
+                            author_rewards += payout * 0.75;
+                            total_votes += post.active_votes.length;
 
-                        total_posts++;
+                            total_posts++;
 
-                        if (vm.lastPayoutDate == '') {
-                            vm.lastPayoutDate = vm.formatDate(post.cashout_time);
+                            if (vm.lastPayoutDate == '') {
+                                vm.lastPayoutDate = vm.formatDate(post.cashout_time);
+                            }
                         }
-                    }
-                    else {
-                        return false;
+                        else {
+                            return false;
+                        }
                     }
                 });
 
