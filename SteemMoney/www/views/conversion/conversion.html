@@ -1,0 +1,37 @@
+﻿<ion-view>
+    <ion-nav-bar class="bar-balanced">
+        <ion-nav-back-button class="button-icon ion-arrow-left-c">
+        </ion-nav-back-button>
+    </ion-nav-bar>
+    <ion-content>
+        <div style="margin:10px;text-align:center;vertical-align:middle;">
+            <img src="./images/logo.png" alt="Wallet" width="100" /><br /> <br />
+            <span style="font-size:30px;">CONVERTER</span>
+        </div>
+        <div class="list list-inset">
+            <label class="item item-input">
+                Value :
+                <input type="number" ng-model="currency_value" style="text-align:right;" ng-change="calculate()"/>
+            </label>
+            <label class="item item-input-inset item-select">
+                <span class="input-label">
+                    From :
+                </span>
+                <select ng-model="currency_from" ng-change="calculate()">
+                    <option>STEEM</option>
+                    <option>STEEM DOLLAR</option>
+                </select>
+            </label>
+            <label class="item item-input-inset item-select">
+                <span class="input-label">
+                    To :
+                </span>
+                <select ng-model="currency_to" ng-options="currency as currency.name for currency in currencies track by currency.id" ng-change="calculate()"></select>
+            </label>
+            <label class="item item-input">
+                Result :
+                <input type="text" disabled style="background-color:white;text-align:right;" ng-model="result" />
+            </label>
+        </div>
+    </ion-content>
+</ion-view>

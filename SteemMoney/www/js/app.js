@@ -22,6 +22,11 @@
                 url: '/home',
                 controller: 'HomeController as homeController',
                 templateUrl: 'views/home/home.html'
+            })
+            .state('conversion', {
+                url: '/conversion',
+                controller: 'ConversionController as conversionController',
+                templateUrl: 'views/conversion/conversion.html'
             });
         $urlRouterProvider.otherwise('/home');
     })
