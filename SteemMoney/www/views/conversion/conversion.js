@@ -46,14 +46,14 @@
 
         vm.SBD = {};
         vm.STEEM = {};
+        vm.rates = {};
 
         getRates();
 
         function getRates() {
             $http.get('https://api.fixer.io/latest?base=USD')
                 .then(function (response) {
-                    var rates = response.data.rates;
-                    console.log(rates);
+                    vm.rates = response.data.rates;
                 });
 
             $http.get('https://api.coinmarketcap.com/v1/ticker/steem-dollars/')
@@ -69,21 +69,43 @@
 
         vm.calculate = function () {
             if (vm.currency_from == 'STEEM') {
-                console.log(vm.currency_to);
-                console.log(vm.currency_value);
-                console.log(vm.STEEM);
                 if (vm.currency_to.id == 'BTC') {
-                    vm.result = parseFloat(vm.currency_value) * parseFloat(vm.STEEM.price_btc); 
+                    vm.result = getBTCValue(vm.STEEM.price_btc); 
                 }
                 else if (vm.currency_to.id == 'USD') {
-                    vm.result = parseFloat(vm.currency_value) * parseFloat(vm.STEEM.price_usd); 
+                    vm.result = getUSDValue(vm.STEEM.price_usd); 
                 }
                 else {
-
+                    vm.result = getUSDValue(vm.STEEM.price_usd) * parseFloat(vm.rates[vm.currency_to.id]); 
                 }
             }
             else {
-
+                if (vm.currency_to.id == 'BTC') {
+                    vm.result = getBTCValue(vm.SBD.price_btc);
+                }
+                else if (vm.currency_to.id == 'USD') {
+                    vm.result = getUSDValue(vm.SBD.price_usd);
+                }
+                else {
+                    vm.result = getUSDValue(vm.SBD.price_usd) * parseFloat(vm.rates[vm.currency_to.id]); 
+                }
             }
+
+            if (isNaN(vm.result)) {
+                vm.result = '0.000';
+            }
+            else {
+                vm.result = vm.result.toFixed(3);
+            }
+
+            vm.result = vm.result + ' ' + vm.currency_to.id;
+        }
+
+        function getUSDValue(usd) {
+            return vm.result = parseFloat(vm.currency_value) * parseFloat(usd); 
+        }
+
+        function getBTCValue(btc) {
+            return vm.result = parseFloat(vm.currency_value) * parseFloat(btc);
         }
     });
