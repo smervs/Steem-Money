@@ -5,7 +5,11 @@
         vm.SBD = '';
         vm.STEEM = '';
         vm.isOnline = navigator.onLine;
-        
+
+        window.addEventListener('native.keyboardshow', function () {
+            document.body.classList.add('keyboard-open');
+        });
+
         if (vm.isOnline) {
             $http.get('https://api.coinmarketcap.com/v1/ticker/steem-dollars/')
                 .then(function (response) {

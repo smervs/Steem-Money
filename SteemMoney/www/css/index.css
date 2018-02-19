@@ -6,7 +6,7 @@
     -webkit-transform: translate(-50%,-50%);
     transform: translate(-50%,-50%);
     position: absolute;
-    top: 50%;
+    top: 45%;
     left:50%;
 }
 
@@ -15,12 +15,8 @@
 }
 
 .home-input-center{
-    width: 150% !important;
-    left: -30% !important;
-}
-
-.logo-title{
-
+    width: 140% !important;
+    left: -20% !important;
 }
 
 .steem {
@@ -63,7 +59,7 @@ html body .center-logo{
     vertical-align: middle;
 }
 
-.refresh-icon-color{
+.icon-color{
     color: white;
 }
 
@@ -75,4 +71,11 @@ input[type="number"]::-webkit-inner-spin-button {
 
 input[type="number"] {
     -moz-appearance: textfield;
+}
+
+.converter-btn {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
 }

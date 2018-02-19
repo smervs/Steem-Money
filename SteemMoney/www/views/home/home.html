@@ -4,21 +4,20 @@
             <div class="div-content-center"><img src="./images/logo.png" alt="Steem Money" width="200" /></div>
             <div class="div-content-center logo-title"><h3><span class="steem">STEEM</span> <span class="money">MONEY</span></h3></div>
             <br />
-            <div class="list list-inset home-input-center" ng-show="isOnline">
+            <div class="list home-input-center" ng-show="isOnline">
                 <div class="item item-input item-input-inset">
                     <i class="icon placeholder-icon">@</i>
                     <input type="text" placeholder="Account Name" ng-model="accountName">
                     <a class="button button-balanced button-small" ui-sref="profile({accountname : accountName})">
                         <i class="icon ion-ios-arrow-forward"></i>
                     </a>
-                </div>
+                </div><a class="button button-balanced button-block" ui-sref="conversion()">C O N V E R T E R</a>
             </div>
             <br /><br />
             <div class="div-content-center steem-market" ng-show="!isOnline"><h4>No Internet Connection!</h4><br /> Please connect to the internet and relaunch this application.</div>
             <div class="div-content-center steem-market" ng-show="isOnline">STEEM : ${{STEEM}}</div>
             <br />
-            <div class="div-content-center steem-market" ng-show="isOnline">STEEM DOLLARS : ${{SBD}}</div>
-            <div style="bottom:-10px;" ng-show="isOnline"><a class="button button-balanced button-small" ui-sref="conversion()" style="width:90%;">Conversion</a></div>
+            <div class="div-content-center steem-market" ng-show="isOnline">STEEM DOLLAR : ${{SBD}}</div>
         </div>
     </ion-content>
 </ion-view>
