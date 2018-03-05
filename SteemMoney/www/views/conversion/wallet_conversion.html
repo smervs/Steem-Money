@@ -1,0 +1,64 @@
+﻿<ion-view>
+    <ion-nav-bar class="bar-balanced">
+        <ion-nav-back-button class="button-icon ion-arrow-left-c">
+        </ion-nav-back-button>
+    </ion-nav-bar>
+    <ion-content ng-controller="WalletConversionController">
+        <div style="margin:10px;text-align:center;vertical-align:middle;">
+            <img src="./images/logo.png" alt="Wallet" width="100" />
+            <h2><span class="steem">CURRENT</span> <span class="money">WALLET</span></h2>
+        </div>
+        <div class="wallet-margin">
+            <div class="row main-content">
+                <h4>STEEM</h4>
+            </div>
+            <div class="row">
+                <table>
+                    <tr>
+                        <td>STEEM :</td>
+                        <td>{{steem_value}}</td>
+                    </tr>
+                    <tr>
+                        <td>BTC value :</td>
+                        <td>{{steem_btc_result}}</td>
+                    </tr>
+                    <tr>
+                        <td>USD value :</td>
+                        <td>{{steem_usd_result}}</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select ng-model="steem_to" ng-options="currency as currency.id for currency in currencies track by currency.id" ng-change="calculate_steem_currency()"></select> value :
+                        </td>
+                        <td>{{steem_cur_result}}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="row main-content">
+                <h4>STEEM DOLLARS</h4>
+            </div>
+            <div class="row">
+                <table>
+                    <tr>
+                        <td>STEEM Dollars :</td>
+                        <td>{{sbd_value}}</td>
+                    </tr>
+                    <tr>
+                        <td>BTC value :</td>
+                        <td>{{sbd_btc_result}}</td>
+                    </tr>
+                    <tr>
+                        <td>USD value :</td>
+                        <td>{{sbd_usd_result}}</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select ng-model="sbd_to" ng-options="currency as currency.id for currency in currencies track by currency.id" ng-change="calculate_sbd_currency()"></select> value :
+                        </td>
+                        <td>{{sbd_cur_result}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

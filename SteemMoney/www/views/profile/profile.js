@@ -9,7 +9,6 @@
         vm.reputation = '';
         vm.steemPower = '';
         vm.accountName = $stateParams.accountname.toLowerCase();
-        vm.accountValue = '';
         vm.lastPayoutDate = '';
 
         loadData();
@@ -63,7 +62,8 @@
                 vm.hasAccount = true;
 
                 steem.formatter.estimateAccountValue(vm.account).then(function (response) {
-                    vm.accountValue = response;
+                    vm.accountValue = '$' + response;
+                    $scope.$apply();
                 });
 
                 calculateTotalWallet();

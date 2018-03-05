@@ -34,6 +34,10 @@
                                 <div class="row">
                                     <table>
                                         <tr>
+                                            <td>Account Value :</td>
+                                            <td>{{accountValue}}</td>
+                                        </tr>
+                                        <tr>
                                             <td>Steem :</td>
                                             <td>{{account.balance}}</td>
                                         </tr>
@@ -97,6 +101,10 @@
                                             <td>{{total_sbd_wallet.toFixed(3)}} SBD</td>
                                         </tr>
                                     </table>
+                                </div>
+                                <br />
+                                <div class="row">
+                                    <a class="button button-balanced" ui-sref="walletConversion({steem:total_steem_wallet,sbd:total_sbd_wallet})" style="width:100%;">View Wallet Value</a>
                                 </div>
                             </div>
                         </ion-content>
