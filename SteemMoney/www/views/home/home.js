@@ -23,12 +23,4 @@
                     vm.STEEM = Number(temp.price_usd).toFixed(2);
                 });
         }
-        steem.api.getAccountHistory('gameon', -1, 100, function (err, result) {
-            console.log(err);
-            console.log(result);
-        });
-        steem.api.getOwnerHistory('gameon', function (err, result) {
-            console.log(err);
-            console.log(result);
-        });
     });
